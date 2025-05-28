@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
 import { usersToClinicsTable } from "@/db/schema";
+import Image from "next/image";
 
 const DashboardPage = async () => {
   const session = await auth.api.getSession({
@@ -27,6 +28,14 @@ const DashboardPage = async () => {
   return (
     <div>
       <h1>Dashboard Page</h1>
+      <h1>{session.user.name}</h1>
+      <h1>{session.user.email}</h1>
+      <Image
+        src={session.user.image ?? ""}
+        alt="User Image"
+        width={100}
+        height={100}
+      />
       <SignOutButton />
     </div>
   );
