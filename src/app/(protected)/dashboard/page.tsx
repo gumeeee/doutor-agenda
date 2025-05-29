@@ -1,12 +1,11 @@
-import { Button } from "@/components/ui/button";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
-import SignOutButton from "./components/sign-out-button";
-import { redirect } from "next/navigation";
 import { db } from "@/db";
-import { eq } from "drizzle-orm";
 import { usersToClinicsTable } from "@/db/schema";
+import { auth } from "@/lib/auth";
+import { eq } from "drizzle-orm";
+import { headers } from "next/headers";
 import Image from "next/image";
+import { redirect } from "next/navigation";
+import SignOutButton from "./_components/sign-out-button";
 
 const DashboardPage = async () => {
   const session = await auth.api.getSession({
