@@ -27,14 +27,17 @@ export const auth = betterAuth({
       });
 
       // TODO: Mudar para retornar todas as clínicas do usuário. Caso aumntar o número de clínicas, mudar para retornar um array de clínicas.
-      const clinic = clinics[0];
+      const clinic = clinics?.[0];
+
       return {
         user: {
           ...user,
-          clinic: {
-            id: clinic.clinicId,
-            name: clinic.clinic.name,
-          },
+          clinic: clinic?.clinicId
+            ? {
+                id: clinic?.clinicId,
+                name: clinic?.clinic?.name,
+              }
+            : undefined,
         },
         session,
       };
