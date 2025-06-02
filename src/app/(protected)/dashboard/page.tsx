@@ -20,6 +20,7 @@ import { DatePicker } from "./_components/date-picker";
 import StatsCard from "./_components/stats-card";
 import TopDoctors from "./_components/top-doctors";
 import TopSpecialities from "./_components/top-specialities";
+import TodayAppointmentsTable from "./_components/today-appointments-table";
 
 interface DashboardPageProps {
   searchParams: Promise<{
@@ -55,6 +56,7 @@ const DashboardPage = async ({ searchParams }: DashboardPageProps) => {
     [totalDoctors],
     topDoctors,
     topSpecialities,
+    todayAppointments,
   ] = await Promise.all([
     db
       .select({
@@ -129,6 +131,17 @@ const DashboardPage = async ({ searchParams }: DashboardPageProps) => {
       )
       .groupBy(doctorsTable.specialty)
       .orderBy(desc(count(appointmentsTable.id))),
+    db.query.appointmentsTable.findMany({
+      where: and(
+        eq(appointmentsTable.clinicId, session.user.clinic.id),
+        gte(appointmentsTable.date, new Date()),
+        lte(appointmentsTable.date, new Date()),
+      ),
+      with: {
+        patient: true,
+        doctor: true,
+      },
+    }),
   ]);
 
   const revenue = totalRevenue?.total ? Number(totalRevenue.total) : null;
@@ -181,8 +194,7 @@ const DashboardPage = async ({ searchParams }: DashboardPageProps) => {
           <TopDoctors topDoctors={topDoctors} />
         </div>
         <div className="grid grid-cols-[2.25fr_1fr] gap-4">
-          {/* Tabela de agendamentos */}
-          <div></div>
+          <TodayAppointmentsTable todayAppointments={todayAppointments} />
           <TopSpecialities topSpecialties={topSpecialities} />
         </div>
       </PageContent>
