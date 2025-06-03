@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
 import { appointmentsTable } from "@/db/schema";
+
 import AppointmentsTableActions from "./table-actions";
 
 type AppointmentWithRelations = typeof appointmentsTable.$inferSelect & {

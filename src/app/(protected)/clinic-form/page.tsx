@@ -1,3 +1,6 @@
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+
 import {
   Dialog,
   DialogContent,
@@ -5,10 +8,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import ClinicForm from "./_components/form";
-import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+
+import ClinicForm from "./_components/form";
 
 const ClinicFormPage = async () => {
   const session = await auth.api.getSession({

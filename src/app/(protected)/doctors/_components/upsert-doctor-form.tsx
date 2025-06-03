@@ -1,3 +1,13 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2, TrashIcon } from "lucide-react";
+import { useAction } from "next-safe-action/hooks";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { NumericFormat } from "react-number-format";
+import { toast } from "sonner";
+import { z } from "zod";
+
+import { deleteDoctor } from "@/actions/delete-doctor";
 import { upsertDoctor } from "@/actions/upsert-doctor";
 import {
   AlertDialog,
@@ -37,16 +47,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { doctorsTable } from "@/db/schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2, TrashIcon } from "lucide-react";
-import { useAction } from "next-safe-action/hooks";
-import { useForm } from "react-hook-form";
-import { NumericFormat } from "react-number-format";
-import { toast } from "sonner";
-import { z } from "zod";
+
 import { medicalSpecialties } from "../_constants";
-import { deleteDoctor } from "@/actions/delete-doctor";
-import { useEffect } from "react";
 
 const formSchema = z
   .object({

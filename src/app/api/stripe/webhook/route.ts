@@ -1,9 +1,9 @@
-import { db } from "@/db";
-import { usersTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { unknown } from "zod";
+
+import { db } from "@/db";
+import { usersTable } from "@/db/schema";
 
 export const POST = async (req: NextRequest) => {
   if (!process.env.STRIPE_SECRET_KEY || !process.env.STRIPE_WEBHOOK_SECRET) {

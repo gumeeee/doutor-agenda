@@ -1,10 +1,8 @@
-import { count, desc, eq, gte, lte, sql } from "drizzle-orm";
+import dayjs from "dayjs";
+import { and, count, desc, eq, gte, lte, sql, sum } from "drizzle-orm";
 
 import { db } from "@/db";
 import { appointmentsTable, doctorsTable, patientsTable } from "@/db/schema";
-import { Session } from "better-auth";
-import dayjs from "dayjs";
-import { and, sum } from "drizzle-orm";
 
 interface GetDashboardProps {
   from: string;

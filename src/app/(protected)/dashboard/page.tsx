@@ -1,3 +1,10 @@
+import dayjs from "dayjs";
+import { Calendar } from "lucide-react";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DataTable } from "@/components/ui/data-table";
 import {
   PageContainer,
   PageContent,
@@ -6,16 +13,10 @@ import {
   PageHeaderContent,
   PageTitle,
 } from "@/components/ui/page-container";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DataTable } from "@/components/ui/data-table";
 import { PageActions } from "@/components/ui/page-container";
 import { getDashboard } from "@/data/get-dashboard";
-import dayjs from "dayjs";
-import { Calendar } from "lucide-react";
+import { auth } from "@/lib/auth";
+
 import { appointmentsTableColumns } from "../appointments/_components/table-columns";
 import AppointmentsChart from "./_components/appointments-chart";
 import { DatePicker } from "./_components/date-picker";

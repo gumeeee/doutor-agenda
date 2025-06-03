@@ -1,3 +1,7 @@
+import { eq } from "drizzle-orm";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+
 import {
   PageActions,
   PageContainer,
@@ -7,13 +11,11 @@ import {
   PageHeaderContent,
   PageTitle,
 } from "@/components/ui/page-container";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-import AddDoctorButton from "./_components/add-doctor-button";
 import { db } from "@/db";
-import { eq } from "drizzle-orm";
 import { doctorsTable } from "@/db/schema";
+import { auth } from "@/lib/auth";
+
+import AddDoctorButton from "./_components/add-doctor-button";
 import DoctorCard from "./_components/doctor-card";
 
 const DoctorsPage = async () => {

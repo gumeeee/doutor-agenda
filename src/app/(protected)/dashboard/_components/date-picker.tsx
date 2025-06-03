@@ -1,6 +1,9 @@
 "use client";
 
+import { addMonths, format } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
+import { parseAsIsoDate, useQueryState } from "nuqs";
 import * as React from "react";
 import { DateRange } from "react-day-picker";
 
@@ -12,9 +15,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import { addMonths, format } from "date-fns";
-import { ptBR } from "date-fns/locale";
-import { parseAsIsoDate, useQueryState } from "nuqs";
 
 export function DatePicker({
   className,

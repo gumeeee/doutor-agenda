@@ -14,6 +14,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 import { getAvailableTimes } from "@/actions/get-available-times";
+import { addAppointment } from "@/actions/upsert-appointment";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -46,7 +47,6 @@ import {
 } from "@/components/ui/select";
 import { doctorsTable, patientsTable } from "@/db/schema";
 import { cn } from "@/lib/utils";
-import { addAppointment } from "@/actions/upsert-appointment";
 
 const formSchema = z.object({
   patientId: z.string().min(1, {

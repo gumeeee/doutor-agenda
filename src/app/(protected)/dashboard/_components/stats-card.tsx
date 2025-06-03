@@ -4,6 +4,7 @@ import {
   StethoscopeIcon,
   UsersIcon,
 } from "lucide-react";
+
 import { Card, CardContent } from "@/components/ui/card";
 
 interface StatsCardProps {
