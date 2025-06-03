@@ -11,7 +11,11 @@ const SubscriptionPage = async () => {
   });
 
   if (!session) {
-    redirect("/login");
+    redirect("/authentication");
+  }
+
+  if (session.user.plan) {
+    redirect("/dashboard");
   }
 
   return (
